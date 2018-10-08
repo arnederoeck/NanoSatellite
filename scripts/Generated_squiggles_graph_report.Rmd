@@ -3,6 +3,7 @@ output: html_document
 params:
   squiggle_file: test
   set_title: test
+  current_dir: test
 ---
 
 ---
@@ -14,15 +15,17 @@ title: `r params$set_title`
 library(ggplot2)
 
 squiggle_file=params$squiggle_file
+current_dir=params$current_dir
+squiggle_file2=paste(current_dir,squiggle_file,sep="/")
 
-index=scan(paste(squiggle_file,".index",sep=""),"character",quiet=T)
+index=scan(paste(squiggle_file2,".index",sep=""),"character",quiet=T)
 index_split=strsplit(index,":#|;")
 index_split[["extra"]]=-1
 
 squiggle_data=list()
 
 for(i in 1:length(index)){
-squiggle_data[[index_split[[i]][2]]]=read.table(squiggle_file,skip=as.integer(index_split[[i]][1]),nrows=as.integer(index_split[[i+1]][1])-as.integer(index_split[[i]][1])-2,header=T,stringsAsFactors = F,sep="\t")
+squiggle_data[[index_split[[i]][2]]]=read.table(squiggle_file2,skip=as.integer(index_split[[i]][1]),nrows=as.integer(index_split[[i+1]][1])-as.integer(index_split[[i]][1])-2,header=T,stringsAsFactors = F,sep="\t")
 }
 
 for(i in 1:length(index)){
@@ -30,3 +33,4 @@ for(i in 1:length(index)){
 }
 
 ```
+
