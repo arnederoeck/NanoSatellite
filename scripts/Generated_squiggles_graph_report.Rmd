@@ -1,0 +1,32 @@
+---
+output: html_document
+params:
+  squiggle_file: test
+  set_title: test
+---
+
+---
+title: `r params$set_title`
+---
+
+```{r,echo=FALSE}
+
+library(ggplot2)
+
+squiggle_file=params$squiggle_file
+
+index=scan(paste(squiggle_file,".index",sep=""),"character",quiet=T)
+index_split=strsplit(index,":#|;")
+index_split[["extra"]]=-1
+
+squiggle_data=list()
+
+for(i in 1:length(index)){
+squiggle_data[[index_split[[i]][2]]]=read.table(squiggle_file,skip=as.integer(index_split[[i]][1]),nrows=as.integer(index_split[[i+1]][1])-as.integer(index_split[[i]][1])-2,header=T,stringsAsFactors = F,sep="\t")
+}
+
+for(i in 1:length(index)){
+  print(ggplot(squiggle_data[[i]],aes(x=pos,y=current))+geom_point(size=0.2)+geom_line(size=0.2)+ ggtitle(index_split[[i]][2])+theme_bw())
+}
+
+```
