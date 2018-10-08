@@ -106,6 +106,6 @@ grep -n "#" ${prefix}.squiggle > ${prefix}.squiggle.index
 ########Create report if requested########
 if [[ $report = "yes" ]]
 then
-	path=${BASH_SOURCE[0]}
+	path=${BASH_SOURCE[0]%/*}
 	Rscript $path/scripts/Generated_squiggles_exec.R ${prefix}.squiggle ${prefix} $path 2>&1 >/dev/null
 fi
