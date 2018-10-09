@@ -14,3 +14,12 @@ Dynamic time warping of Oxford Nanopore squiggle data to characterize tandem rep
   * rmarkdown
   * dtwclust
   * knitr
+
+### Examples
+
+#### Generate reference squiggles for the ABCA7 VNTR
+
+```
+sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCCCCACCACTCCCTCCCC -p ABCA7_VNTR
+
+```
