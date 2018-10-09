@@ -1,0 +1,35 @@
+---
+output: html_document
+params:
+  sr_squiggle_sel:
+  chunk_sep_total2:
+  chunk_sep_diff2:
+  chunk_sep_rep_units2:
+  title: test
+---
+
+---
+title: `r params$title`
+author: "aRne"
+---
+```{r,echo=FALSE}
+
+library(ggplot2)
+library(knitr)
+
+kable(params$chunk_sep_rep_units2)
+
+
+ggplot(params$chunk_sep_diff2,aes(x=difference,colour=name))+geom_density()+theme_bw()+facet_grid(strand ~ .)
+
+
+for(j in 1:length(params$sr_squiggle_sel)){
+print(ggplot(params$sr_squiggle_sel[[j]],aes(x=number,y=signalz))+
+    geom_point(size=0.2)+
+    geom_line(size=0.2)+
+    geom_vline(xintercept = params$chunk_sep_total2[params$chunk_sep_total2$name==names(params$sr_squiggle_sel)[j],"number"],color="blue",alpha=0.5)+
+    ggtitle(names(params$sr_squiggle_sel)[j])+
+    theme_bw())
+}
+
+```
