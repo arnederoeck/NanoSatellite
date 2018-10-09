@@ -28,8 +28,6 @@ sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCC
 #### Delineate and segment tandem repeat spanning reads
 
 This script expects the reference squiggles generated above and tab a separated input file (e.g. *spanning_reads.txt*) containing a *name*, *strand* and *path* to fast5. 
-One possible way to obtain this input file is by using [tandem-genotypes](https://github.com/mcfrith/tandem-genotypes) with the "-v" (verbose) option and then processing the output file.
-Another is to 
 
 Example:
 
@@ -39,8 +37,21 @@ name strand	path
 162df1f1-bd5d-4cd1-a558-e6dd1525c6cc	negative	/storage/fast5/read_8421_ch_1457_strand.fast5
 40b2e343-cc45-4c7c-9714-bede62e39748	negative	/storage/fast5/read_4311_ch_1669_strand.fast5
 ```
+One possible way to obtain this input file is by first indexing the fast5 containing folder and summary files produced by Albacore or Guppy and then using the temporary *Spanning_read_extractor.sh* script
 
-Run Singal2chunk.R:
+```
+sh fast5_indexing.sh /storage/albacore/summary.tsv /storage/fast5 example
+
+sh Spanning_read_extractor.sh \
+/storage/bams/example.bam \
+chr19:1049437-1050028 \
+example_index.gz
+
+```
+
+Another option is [tandem-genotypes](https://github.com/mcfrith/tandem-genotypes) with the "-v" (verbose) option and then processing the output file.
+
+Run delineation and segmentation:
 
 ```
 Rscript Signal2chunk.R spanning_reads.txt ABCA7_VNTR_squiggle_analysis.squiggle
