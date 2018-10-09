@@ -1,7 +1,9 @@
 # NanoSatellite
 Dynamic time warping of Oxford Nanopore squiggle data to characterize tandem repeats.
 
-# UNDER CONSTRUCTION!
+## UNDER CONSTRUCTION!
+* NanoSatellite is tested on the ABCA7 VNTR (a tandem repeat with a 25bp motif) and PromethION data.
+* The scripts are being updated to become more user friendly and efficient.
 
 ### Dependencies
 * [Scrappie](https://github.com/nanoporetech/scrappie "Scrappie") needs to be in path
@@ -25,7 +27,9 @@ sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCC
 
 #### Delineate and segment tandem repeat spanning reads
 
-This script expects the reference squiggles generated above and tab separated input file (e.g. *spanning_reads.txt*) containing a *name*, *strand* and *path* to fast5. 
+This script expects the reference squiggles generated above and tab a separated input file (e.g. *spanning_reads.txt*) containing a *name*, *strand* and *path* to fast5. 
+One possible way to obtain this input file is by using [tandem-genotypes](https://github.com/mcfrith/tandem-genotypes) with the "-v" (verbose) option and then processing the output file.
+Another is to 
 
 Example:
 
