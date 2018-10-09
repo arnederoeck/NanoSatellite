@@ -8,9 +8,9 @@ Dynamic time warping of Oxford Nanopore squiggle data to characterize tandem rep
 * R and following R packages:
   * rhdf5
   * dtw
-ggplot2
-dplyr
-tidyr
-rmarkdown
-dtwclust
-knitr
+  * ggplot2
+  * dplyr
+  * tidyr
+  * rmarkdown
+  * dtwclust
+  * knitr
