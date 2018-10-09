@@ -26,3 +26,10 @@ sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCC
 #### Delineate and segment tandem repeat spanning reads
 
 This script expects the reference squiggles generated above and tab separated input file containing a *name*, *strand* and *path to fast5* header.
+
+```
+name strand	path
+02eca7e3-ec99-4ade-bef6-d1a2d0a0ab0f	positive	/storage/fast5/read_7237_ch_2597_strand.fast5
+162df1f1-bd5d-4cd1-a558-e6dd1525c6cc	negative	/storage/fast5/read_8421_ch_1457_strand.fast5
+40b2e343-cc45-4c7c-9714-bede62e39748	negative	/storage/fast5/read_4311_ch_1669_strand.fast5
+```
