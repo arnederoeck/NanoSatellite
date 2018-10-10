@@ -65,4 +65,4 @@ Rscript Signal2chunk.R spanning_reads.txt ABCA7_VNTR.squiggle
 The output consists of:
 * several *.chunk* files, each corresponding to a tandem repeat squiggle unit.
 * A *read_metadata.table* containing the number of repeat units per read
-* A html report: *chunk_report.html*
+* An html report: *chunk_report.html*
