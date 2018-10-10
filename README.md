@@ -59,5 +59,5 @@ Another option is [tandem-genotypes](https://github.com/mcfrith/tandem-genotypes
 Run delineation and segmentation:
 
 ```
-Rscript Signal2chunk.R spanning_reads.txt ABCA7_VNTR_squiggle_analysis.squiggle
+Rscript Signal2chunk.R spanning_reads.txt ABCA7_VNTR.squiggle
 ```
