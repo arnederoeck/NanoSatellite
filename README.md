@@ -5,6 +5,10 @@ Dynamic time warping of Oxford Nanopore squiggle data to characterize tandem rep
 * NanoSatellite is tested on the ABCA7 VNTR (a tandem repeat with a 25bp motif) and PromethION data.
 * I am updating NanoSatellite to be more user friendly and efficient.
 
+### Preprint
+
+More information can be found in our [preprint](https://www.biorxiv.org/content/early/2018/10/09/439026).
+
 ### Dependencies
 * [Scrappie](https://github.com/nanoporetech/scrappie "Scrappie") needs to be in path
 * Samtools in path
