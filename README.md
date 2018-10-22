@@ -12,7 +12,7 @@ More information can be found in our [preprint](https://www.biorxiv.org/content/
 ### Dependencies
 * [Scrappie](https://github.com/nanoporetech/scrappie "Scrappie") needs to be in path
 * Samtools in path
-* R and following R packages:
+* R and following R packages: 
   * rhdf5
   * dtw
   * ggplot2
@@ -21,6 +21,10 @@ More information can be found in our [preprint](https://www.biorxiv.org/content/
   * rmarkdown
   * dtwclust
   * knitr
+```
+#Open R and run the following command:
+install.packages(c("rhdf5","dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust","knitr"))
+```
 
 ### Usage
 
