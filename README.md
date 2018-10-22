@@ -22,7 +22,7 @@ More information can be found in our [preprint](https://www.biorxiv.org/content/
   * dtwclust
   * knitr
 ```
-#Open R and run the following command:
+#To install these packages, open R and run the following command:
 install.packages(c("rhdf5","dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust","knitr"))
 ```
 
