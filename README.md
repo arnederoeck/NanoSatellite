@@ -1,13 +1,15 @@
 # NanoSatellite
 Dynamic time warping of Oxford Nanopore squiggle data to characterize tandem repeats.
 
+## Rationale
+
+Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://github.com/mcfrith/tandem-genotypes) and [RepeatHMM](https://github.com/WGLab/RepeatHMM)). While they do a great job for many tandem repeats in a relatively fast fashion, their quality depends on base calling and alignment. For some tandem repeats (in particular expanded and/or GC-rich tandem repeats), base calling and alignment perform poorly with suboptimal (and DNA strand biased) tandem repeat length and sequence estimations. To overcome these issues, we developed NanoSatellite, a dynamic time warping based algorithm to analyze tandem repeats on raw Oxford Nanopore squiggle data. More information can be found in our [preprint](https://www.biorxiv.org/content/early/2018/10/09/439026).
+
+
 ## UNDER CONSTRUCTION!
 * NanoSatellite is tested on the ABCA7 VNTR (a tandem repeat with a 25bp motif) and PromethION data.
 * I am updating NanoSatellite to be more user friendly and efficient.
 
-### Preprint
-
-More information can be found in our [preprint](https://www.biorxiv.org/content/early/2018/10/09/439026).
 
 ### Dependencies
 * [Scrappie](https://github.com/nanoporetech/scrappie "Scrappie") needs to be in path
