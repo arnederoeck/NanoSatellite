@@ -12,7 +12,7 @@ Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://g
 * I am updating NanoSatellite to be more user friendly and efficient.
 
 
-### Dependencies
+## Dependencies
 * [Scrappie](https://github.com/nanoporetech/scrappie "Scrappie") needs to be in path
 * Samtools in path
 * R and following R packages: 
@@ -29,15 +29,15 @@ Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://g
 install.packages(c("rhdf5","dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust","knitr"))
 ```
 
-### Usage
+## Usage
 
-#### Generate reference squiggles for the ABCA7 VNTR
+### Generate reference squiggles for the ABCA7 VNTR
 
 ```
 sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCCCCACCACTCCCTCCCC -p ABCA7_VNTR
 ```
 
-#### Delineate and segment tandem repeat spanning reads
+### Delineate and segment tandem repeat spanning reads
 
 This script expects the reference squiggles generated above and tab a separated input file (e.g. *spanning_reads.txt*) containing a *name*, *strand* and *path* to fast5. 
 
