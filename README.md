@@ -13,21 +13,28 @@ Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://g
 
 
 ## Dependencies
-* [Scrappie](https://github.com/nanoporetech/scrappie "Scrappie") needs to be in path
-* Samtools in path
-* R and following R packages: 
-  * rhdf5
-  * dtw
-  * ggplot2
-  * dplyr
-  * tidyr
-  * rmarkdown
-  * dtwclust
-  * knitr
+* [Scrappie](https://github.com/nanoporetech/scrappie "Scrappie") (>= 1.3.1) needs to be in path
+* Samtools (>= 1.3) in path
+* R (>= 3.4.2) and following R packages: 
+  * rhdf5 (>= 2.22.0)
+  * dtw (>= 1.18-1)
+  * ggplot2 (>= 2.2.1)
+  * dplyr (>= 0.7.7)
+  * tidyr (>= 0.7.2)
+  * rmarkdown (>= 1.8)
+  * dtwclust (>= 5.5.0)
+  * knitr (>= 1.18)
 ```
 #To install these packages, open R and run the following command:
 install.packages(c("rhdf5","dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust","knitr"))
 ```
+* [NanoSatelliteR](https://github.com/arnederoeck/NanoSatelliteR) (>= 0.1.0) for downstream qc, plotting, and clustering of NanoSatellite results 
+```
+#Install in R with:
+library(devtools)
+install_github("aderoeck/NanoSatelliteR")
+```
+
 
 ## Usage
 
