@@ -32,8 +32,7 @@ install.packages(c("rhdf5","dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust
 * [NanoSatelliteR](https://github.com/arnederoeck/NanoSatelliteR) (>= 0.1.0) for downstream quality control, plotting, and clustering of NanoSatellite results 
 ```
 #Install in R with:
-library(devtools)
-install_github("aderoeck/NanoSatelliteR")
+devtools::install_github("aderoeck/NanoSatelliteR")
 ```
 
 
