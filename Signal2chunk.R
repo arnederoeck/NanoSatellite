@@ -205,6 +205,9 @@ chunk_sep=do.call("rbind",chunk_sep_list)
 chunk_sep_meta=data.frame(name=unique(chunk_sep$name),stringsAsFactors = F)
 chunk_sep_meta=cbind(chunk_sep_meta,do.call("rbind",lapply(chunk_sep_meta$name,function(x) data.frame(start=min(chunk_sep[chunk_sep$name==x,"number"]),end=max(chunk_sep[chunk_sep$name==x,"number"])))))
 
+chunk_sep_meta2=chunk_sep_meta[chunk_sep_meta$end-chunk_sep_meta$start > nrow(theo_data$TR_sequence_positive),]
+sr_squiggle_sel2=sr_squiggle_sel[chunk_sep_meta2$name]
+
 ### Center piece ###
 
 # Create new selection for unbiased scaling #
@@ -216,7 +219,7 @@ sr_squiggle_sel_center=mapply(
     xxx
     }
   ,
-  sr_squiggle_sel,chunk_sep_meta$start,chunk_sep_meta$end,SIMPLIFY = F
+  sr_squiggle_sel2,chunk_sep_meta2$start,chunk_sep_meta2$end,SIMPLIFY = F
   )
 
 window_size_round2=round(nrow(theo_data$TR_sequence_positive)/450*4000*1.3*2)
