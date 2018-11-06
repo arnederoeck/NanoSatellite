@@ -28,7 +28,7 @@ Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://g
 #To install these packages, open R and run the following command:
 install.packages(c("rhdf5","dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust","knitr"))
 ```
-* [NanoSatelliteR](https://github.com/arnederoeck/NanoSatelliteR) (>= 0.1.0) for downstream qc, plotting, and clustering of NanoSatellite results 
+* [NanoSatelliteR](https://github.com/arnederoeck/NanoSatelliteR) (>= 0.1.0) for downstream quality control, plotting, and clustering of NanoSatellite results 
 ```
 #Install in R with:
 library(devtools)
