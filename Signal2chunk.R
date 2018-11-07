@@ -118,11 +118,11 @@ max_flank_size=max(theo_meta$flank_size,na.rm = T)
 window_size=max_flank_size*mvnStepPattern*2
 
 sr_squiggle_win1=lapply(sr_squiggle,function(x){
-  split(x,cut(x$number,c(seq(0,max(x$number),by=window_size),max(x$number))))
+  split(x,cut(x$number,unique(c(seq(0,max(x$number),by=window_size),max(x$number)))))
 })
 
 sr_squiggle_win2=lapply(sr_squiggle,function(x){
-  split(x,cut(x$number,c(seq(-window_size/2,max(x$number)-window_size/2,by=window_size),max(x$number))))
+  split(x,cut(x$number,unique(c(seq(-window_size/2,max(x$number)-window_size/2,by=window_size),max(x$number)))))
 })
 
 keys <- unique(c(names(sr_squiggle_win1), names(sr_squiggle_win2)))
