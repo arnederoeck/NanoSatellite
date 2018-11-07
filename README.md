@@ -31,7 +31,11 @@ install.packages(c("rhdf5","dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust
 ```
 * [NanoSatelliteR](https://github.com/arnederoeck/NanoSatelliteR) (>= 0.1.0) for downstream quality control, plotting, and clustering of NanoSatellite results 
 ```
-#Install in R with:
+#Install in R
+devtools::install_github("aderoeck/NanoSatelliteR")
+
+#If you get an "Installation failed: error in running command" error (sometimes happens when R is installed via conda) use:
+options(unzip = "internal")
 devtools::install_github("aderoeck/NanoSatelliteR")
 ```
 
