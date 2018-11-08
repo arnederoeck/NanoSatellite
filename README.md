@@ -46,8 +46,14 @@ devtools::install_github("aderoeck/NanoSatelliteR")
 
 ## Usage
 
-### Generate reference squiggles for the ABCA7 VNTR
+### Clone this repository
 
+```
+git clone https://github.com/arnederoeck/NanoSatellite
+```
+
+### Generate reference squiggles (Squiggle_generator.sh)
+#### ABCA7 VNTR example:
 ```
 sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCCCCACCACTCCCTCCCC -p ABCA7_VNTR
 ```
