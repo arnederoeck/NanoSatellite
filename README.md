@@ -103,6 +103,9 @@ example_index.gz
 ### Delineate and segment tandem repeat spanning reads on the squiggle level (Signal2chunk.R)
 
 ```
+Rscript Signal2chunk.R <spanning_reads file> <reference_squiggles.squiggle>
+
+Example:
 Rscript Signal2chunk.R spanning_reads.txt ABCA7_VNTR.squiggle
 ```
 
