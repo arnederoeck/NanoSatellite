@@ -120,12 +120,15 @@ The output consists of:
 
 #### Quality control
 
+##### ABCA7 VNTR example:
 ```
 library(NanoSatelliteR)
 chunk_dir="/storage/NanoSatellite_chunks/"
 df <- load_summary(chunk_dir)
 qc <- summary_qc(df)
 ```
+![NanoSatelliteR QC](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_qc.png)
+
 #### Tandem repeat length plotting
 
 #### Clustering to identify alternative motifs
