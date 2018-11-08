@@ -50,6 +50,9 @@ devtools::install_github("aderoeck/NanoSatelliteR")
 
 ```
 git clone https://github.com/arnederoeck/NanoSatellite
+
+# Optionally, make shortcuts to the scripts:
+ln -s $PWD/NanoSatellite/{*.sh,*.R} ~/bin
 ```
 
 ### Generate reference squiggles (Squiggle_generator.sh)
