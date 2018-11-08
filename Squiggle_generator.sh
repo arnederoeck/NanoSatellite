@@ -22,6 +22,16 @@ while getopts 'f:r:l:u:n:p:e:' flag; do
   esac
 done
 
+if [[ -z $reference_file || -z $region || -z $TR_unit ]]; then
+  echo 'Error: one or more mandatory variables are undefined'
+  exit 1
+fi
+
+if [ ! -f $reference_file ]; then
+    echo "Error: File not found"
+    exit 1
+fi
+
 ######## Obtain coordinates from input ########
 chromosome=`echo $region | cut -d ':' -f1`
 
