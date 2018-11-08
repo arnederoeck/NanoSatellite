@@ -59,6 +59,17 @@ ln -s $PWD/NanoSatellite/{*.sh,*.R} ~/bin
 #### ABCA7 VNTR example:
 ```
 sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCCCCACCACTCCCTCCCC -p ABCA7_VNTR
+
+Mandatory arguments
+    -f Fasta file with your genome of interest (necessary in the algorithm to determine the flanking sequences)
+    -r Coordinates of your tandem repeat of interest (e.g. you can obtain these from the Tandem Repeats Finder / Simple Repeats track in the UCSC browser)
+    -u Consensus motif of your tandem repeat of interest (e.g. you can obtain these from the Tandem Repeats Finder / Simple Repeats track in the UCSC browser)
+    
+Additional options
+    -p Name added to the output files
+    -e If you add "-e no" then generation of an optional markdown report is suppressed
+    -l Change the size of the flanking sequence in the reference squiggles
+    -n Change the number of tandem repeat units in the reference squiggles
 ```
 
 ### Delineate and segment tandem repeat spanning reads
