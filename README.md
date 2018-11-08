@@ -113,3 +113,17 @@ The output consists of:
 * several *.chunk* files, each corresponding to a tandem repeat squiggle unit.
 * A *read_metadata.table* containing the number of repeat units per read
 * An html report: *chunk_report.html*
+
+### Downstream processing in R with NanoSatelliteR
+
+#### Load data
+
+```{r}
+
+```
+
+#### Quality control
+
+#### Tandem repeat length plotting
+
+#### Clustering to identify alternative motifs
