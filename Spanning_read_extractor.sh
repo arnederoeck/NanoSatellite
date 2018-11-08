@@ -1,5 +1,25 @@
 #!/bin/bash
 
+if [[ -z $1 || -z $2 || -z $3 ]]; then
+  echo 'Error: one or more mandatory variables are undefined'
+  exit 1
+fi
+
+if [ ! -f $1 ]; then
+    echo "Error: Bam file not found"
+    exit 1
+fi
+
+if [ ! -f $1.bai ]; then
+    echo "Error: Bam index not found"
+    exit 1
+fi
+
+if [ ! -f $3 ]; then
+    echo "Error: fast5 index not found"
+    exit 1
+fi
+
 bam=$1
 region=$2
 index=$3
