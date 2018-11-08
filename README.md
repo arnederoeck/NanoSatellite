@@ -36,11 +36,11 @@ BiocManager::install("rhdf5", version = "3.8")
 * [NanoSatelliteR](https://github.com/arnederoeck/NanoSatelliteR) (>= 0.1.0) for downstream quality control, plotting, and clustering of NanoSatellite results 
 ```
 #Install in R
-devtools::install_github("aderoeck/NanoSatelliteR")
+devtools::install_github("arnederoeck/NanoSatelliteR")
 
 #If you get an "Installation failed: error in running command" error (sometimes happens when R is installed via conda) use:
 options(unzip = "internal")
-devtools::install_github("aderoeck/NanoSatelliteR")
+devtools::install_github("arnederoeck/NanoSatelliteR")
 ```
 
 
@@ -118,12 +118,14 @@ The output consists of:
 
 #### Load data
 
-```{r}
-
-```
-
 #### Quality control
 
+```
+library(NanoSatelliteR)
+chunk_dir="/storage/NanoSatellite_chunks/"
+df <- load_summary(chunk_dir)
+qc <- summary_qc(df)
+```
 #### Tandem repeat length plotting
 
 #### Clustering to identify alternative motifs
