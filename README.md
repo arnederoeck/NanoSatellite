@@ -116,11 +116,8 @@ The output consists of:
 
 ### Downstream processing in R with NanoSatelliteR
 
-#### Load data
-
 #### Quality control
 
-##### ABCA7 VNTR example:
 ```
 library(NanoSatelliteR)
 chunk_dir="/storage/NanoSatellite_chunks/"
