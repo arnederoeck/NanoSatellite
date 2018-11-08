@@ -66,7 +66,7 @@ Mandatory arguments
     -u Consensus motif of your tandem repeat of interest (e.g. you can obtain these from the Tandem Repeats Finder / Simple Repeats track in the UCSC browser)
     
 Additional arguments
-    -p Name added to the output files
+    -p Prefix added to the output files
     -e If you add "-e no" then generation of an optional markdown report is suppressed
     -l Change the size of the flanking sequence in the reference squiggles
     -n Change the number of tandem repeat units in the reference squiggles
@@ -77,34 +77,30 @@ Additional arguments
 sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCCCCACCACTCCCTCCCC -p ABCA7_VNTR
 ```
 
-
-### Delineate and segment tandem repeat spanning reads
-
-This script expects the reference squiggles generated above and tab a separated input file (e.g. *spanning_reads.txt*) containing a *name*, *strand* and *path* to fast5. 
+### Index fast5 directory (fast5_indexing.sh)
+```
+sh fast5_indexing.sh <summary_file> <fast5_directory> <prefix>
 
 Example:
-
-```
-name strand	path
-02eca7e3-ec99-4ade-bef6-d1a2d0a0ab0f	positive	/storage/fast5/read_7237_ch_2597_strand.fast5
-162df1f1-bd5d-4cd1-a558-e6dd1525c6cc	negative	/storage/fast5/read_8421_ch_1457_strand.fast5
-40b2e343-cc45-4c7c-9714-bede62e39748	negative	/storage/fast5/read_4311_ch_1669_strand.fast5
-```
-One possible way to obtain this input file is by first indexing the fast5 containing folder and summary files produced by Albacore or Guppy and then using the temporary *Spanning_read_extractor.sh* script
-
-```
 sh fast5_indexing.sh /storage/albacore/summary.tsv /storage/fast5 example
+```
 
+### Extract tandem repeat spanning reads (Spanning_read_extractor.sh)
+
+Reads spanning the tandem repeat of interest are extracted from an aligned BAM file and coupled to the corresponding fast5 file.
+In general, commonly used alignment tools (e.g. [minimap2](https://github.com/lh3/minimap2)) should suffice. However, some tandem repeats are more difficult to align. In such a case, an approach as described [here](https://github.com/mcfrith/last-rna/blob/master/last-long-reads.md) could potentially yield more spanning reads.
+
+```
+sh Spanning_read_extractor.sh <in.bam> <region> <index>
+
+Example:
 sh Spanning_read_extractor.sh \
 /storage/bams/example.bam \
 chr19:1049437-1050028 \
 example_index.gz
-
 ```
 
-Another option is [tandem-genotypes](https://github.com/mcfrith/tandem-genotypes) with the "-v" (verbose) option and then processing the output file.
-
-Run delineation and segmentation:
+### Delineate and segment tandem repeat spanning reads on the squiggle level (Signal2chunk.R)
 
 ```
 Rscript Signal2chunk.R spanning_reads.txt ABCA7_VNTR.squiggle
