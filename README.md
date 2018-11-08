@@ -26,8 +26,12 @@ Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://g
   * knitr (>= 1.18)
   * devtools (>=2.0.0)
 ```
-#To install these packages, open R and run the following command:
-install.packages(c("rhdf5","dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust","knitr","devtools"))
+#To install these packages, open R and run the following commands:
+install.packages(c("dtw","ggplot2","dplyr","tidyr","rmarkdown","dtwclust","knitr","devtools"))
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("rhdf5", version = "3.8")
 ```
 * [NanoSatelliteR](https://github.com/arnederoeck/NanoSatelliteR) (>= 0.1.0) for downstream quality control, plotting, and clustering of NanoSatellite results 
 ```
