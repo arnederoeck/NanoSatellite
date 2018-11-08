@@ -1,3 +1,17 @@
+####### Parameters #######
+
+args=commandArgs(trailingOnly = TRUE)
+
+spanning_reads_file=args[1]
+theo_squiggle_file=args[2]
+
+if(file.exists(spanning_reads)==F){stop("Spanning_reads file not found")}
+if(file.exists(theo_squiggle_file)==F){stop("Reference_squiggle file not found")}
+
+
+mvnStepPattern=25
+digit=1
+
 ####### Libraries #######
 library(rhdf5)
 library(dtw,quietly = T)
@@ -19,16 +33,6 @@ H5close()
 
 df
 }
-
-####### Parameters #######
-
-args=commandArgs(trailingOnly = TRUE)
-
-spanning_reads_file=args[1]
-theo_squiggle_file=args[2]
-
-mvnStepPattern=25
-digit=1
 
 ####### Load sequence read data #######
 sr=read.table(spanning_reads_file,header=T,sep="\t",stringsAsFactors = F)
