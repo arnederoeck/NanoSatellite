@@ -1,4 +1,19 @@
 #!/bin/bash
+if [[ -z $1 || -z $2 || -z $3 ]]; then
+  echo 'Error: one or more mandatory variables are undefined'
+  exit 1
+fi
+
+if [ ! -f $1 ]; then
+    echo "Error: summary file not found"
+    exit 1
+fi
+
+if [ ! -d $2 ]; then
+    echo "Error: fast5 directory not found"
+    exit 1
+fi
+
 awk '{print $1 "\t" $2}'  $1 | sort -k1 > summary_awk_sort.txt & 
 
 P1=$!
