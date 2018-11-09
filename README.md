@@ -175,7 +175,7 @@ ns_heatmap(positive_clustering@distmat,"example.png",max_dist=200,rm0=T)
 Clustering in more than 2 groups is also possible. However, by increasing the number of clusters, differences between clusters become smaller which can impair accuracy. Hence supervision of clustering by the user is warranted. Re-clustering can be done by re-running `tsclust()` and supplying the previously generated distance matrix to the `distmat` paramater in `hierarchical_control()`.
 
 
-##### Centroid and cluster extraction
+##### Centroid extraction
 
 ```
 cent <- extract_centroids(positive_clustering)
@@ -185,3 +185,13 @@ ggplot(cent,aes(x=pos,y=signal,colour=factor(cluster)))+geom_point()+geom_line()
 ```
 
 ![NanoSatelliteR_centroid_plot](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_centroid_plot.png)
+
+For each cluster, a centroid is assigned. In this particular case of positive ABCA7 VNTR tandem repeat unit squiggles, the differences observed in cluster 1, are caused by a guanine insertion, or cytosine to adenine substitution at nucleotide ten of the ABCA7 VNTR consensus motif (inferred from comparison to Scrappie reference squiggles).
+
+##### Cluster sequence per sequencing read
+
+```
+cpr <- clusters_per_read(positive_clustering)
+```
+
+This provides a data.frame with a comma-separated string of clusters per sequencing read, ordered from start to end according to the original sequencing read squiggle.
