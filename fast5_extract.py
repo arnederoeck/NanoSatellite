@@ -8,7 +8,7 @@ def main():
     args = get_args()
     if args.file:
         for filename in args.file:
-            extract_signal(args.file)
+            extract_signal(filename)
     else:
         for filename in glob.iglob(args.dir + '**/*.fast5', recursive=args.recursive):
             extract_signal(filename)
