@@ -7,10 +7,8 @@ Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://g
 
 ![NanoSatellite delineation and segmentation](https://github.com/arnederoeck/NanoSatellite/blob/master/raw_positive_squiggle_plot_chunk_colorized20180813.png)
 
-## UNDER CONSTRUCTION!
-* NanoSatellite is tested on the ABCA7 VNTR (a tandem repeat with a 25bp motif) and PromethION data.
-* I am updating NanoSatellite to be more user friendly and efficient.
-
+## Citation
+If this tool is useful for your work, please consider citing our [preprint](https://www.biorxiv.org/content/early/2018/10/09/439026).
 
 ## Dependencies
 * [Scrappie](https://github.com/nanoporetech/scrappie "Scrappie") (>= 1.3.1) needs to be in path. (installation through [conda](https://anaconda.org/bioconda/scrappie) is also possible)
