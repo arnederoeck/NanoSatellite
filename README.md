@@ -134,5 +134,8 @@ The output consists of plots displaying normalized "flank" and "center" dynamic 
 df2 <- qual_reads(df,qc$center_cutoff)
 plot_lengths(df2)
 ```
+Each sample is depicted in a separate panel, the number of tandem repeat units is shown on the y-axis, and colored dots correspond to individual sequencing reads originating from positive (red) and negative (blue) DNA strands.
+
+![NanoSatelliteR_plot_lengths](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_plot_lengths.png)
 
 #### Clustering to identify alternative motifs
