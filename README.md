@@ -65,7 +65,6 @@ The corresponding annotation files (&ast;_spanning_reads.txt) can be found in Na
 
 ```
 sed -i "s|your_fast5_directory|/your/fast5/directory|" *_spanning_reads.txt
-
 ```
 
 
