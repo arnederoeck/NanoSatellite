@@ -64,6 +64,7 @@ for f in `ls *.tar.gz`; do tar -xzvf $f; done
 The corresponding annotation files (&ast;_spanning_reads.txt) can be found in NanoSatellite/ABCA7_VNTR_example. These files replace steps 2. and 3. below. If you'd like to use this example data, it's important to set the path to the directory where the fast5 files were unpacked. The following code can be used:
 
 ```
+cd NanoSatellite/ABCA7_VNTR_example/
 sed -i "s|your_fast5_directory|/your/fast5/directory|" *_spanning_reads.txt
 ```
 
