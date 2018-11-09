@@ -5,7 +5,7 @@ Dynamic time warping of Oxford Nanopore squiggle data to characterize tandem rep
 
 Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://github.com/mcfrith/tandem-genotypes) and [RepeatHMM](https://github.com/WGLab/RepeatHMM)). While they do a great job for many tandem repeats in a relatively fast fashion, their quality depends on base calling and alignment. For some tandem repeats (in particular expanded and/or GC-rich tandem repeats), base calling and alignment perform poorly with suboptimal (and DNA strand biased) tandem repeat length and sequence estimations. To overcome these issues, we developed NanoSatellite, a dynamic time warping based algorithm to analyze tandem repeats on raw Oxford Nanopore squiggle data. The figure below illustrates how NanoSatellite can delineate a tandem repeat in squiggle data and subsequently segment that tandem repeat in seperate units. More information can be found in our [preprint](https://www.biorxiv.org/content/early/2018/10/09/439026).
 
-![NanoSatellite delineation and segmentation](https://github.com/arnederoeck/NanoSatellite/blob/master/raw_positive_squiggle_plot_chunk_colorized20180813.png)
+![NanoSatellite delineation and segmentation](https://github.com/arnederoeck/NanoSatellite/blob/master/figures/raw_positive_squiggle_plot_chunk_colorized20180813.png)
 
 ## Citation
 If this tool is useful for your work, please consider citing our [preprint](https://www.biorxiv.org/content/early/2018/10/09/439026).
@@ -132,7 +132,7 @@ qc <- summary_qc(df)
 ```
 The output consists of plots displaying normalized "flank" and "center" dynamic time warping distance, respectively corresponding to delineation of tandem repeat squiggles from flanking squiggles, and the segmentation of the tandem repeat squiggle. In addition, cutoff values (red lines in the plots) corresponding to 1.5 times the interquartile range from the 75th percentile are returned.
 
-![NanoSatelliteR QC](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_qc.png)
+![NanoSatelliteR QC](https://github.com/arnederoeck/NanoSatellite/blob/master/figures/NanoSatelliteR_qc.png)
 
 #### Tandem repeat length plotting
 
@@ -142,7 +142,7 @@ plot_lengths(df2)
 ```
 Each sample is depicted in a separate panel, the number of tandem repeat units is shown on the y-axis, and colored dots correspond to individual sequencing reads originating from positive (red) and negative (blue) DNA strands.
 
-![NanoSatelliteR_plot_lengths](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_plot_lengths.png)
+![NanoSatelliteR_plot_lengths](https://github.com/arnederoeck/NanoSatellite/blob/master/figures/NanoSatelliteR_plot_lengths.png)
 
 #### Clustering to identify alternative motifs
 
@@ -182,7 +182,7 @@ library(ggplot2)
 ggplot(cent,aes(x=pos,y=signal,colour=factor(cluster)))+geom_point()+geom_line()+theme_minimal()+facet_grid(. ~ cluster)+guides(colour=guide_legend(title="cluster"))
 ```
 
-![NanoSatelliteR_centroid_plot](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_centroid_plot.png)
+![NanoSatelliteR_centroid_plot](https://github.com/arnederoeck/NanoSatellite/blob/master/figures/NanoSatelliteR_centroid_plot.png)
 
 For each cluster, a centroid is assigned. In this particular case of positive ABCA7 VNTR tandem repeat unit squiggles, the differences observed in cluster 1, are caused by a guanine insertion, or cytosine to adenine substitution at nucleotide ten of the ABCA7 VNTR consensus motif (inferred from comparison to Scrappie reference squiggles).
 
