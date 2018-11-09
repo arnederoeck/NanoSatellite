@@ -172,6 +172,9 @@ ns_heatmap(positive_clustering@distmat,"example.png",max_dist=200,rm0=T)
 
 ```
 
+Clustering in more than 2 groups is also possible. However, by increasing the number of clusters, differences between clusters become smaller which can impair accuracy. Hence supervision of clustering by the user is warranted. Re-clustering can be done by re-running `tsclust()` and supplying the previously generated distance matrix to the `distmat` paramater in `hierarchical_control()`.
+
+
 ##### Centroid and cluster extraction
 
 ```
