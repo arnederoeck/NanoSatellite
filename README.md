@@ -114,6 +114,14 @@ The output consists of:
 * A *read_metadata.table* containing the number of repeat units per read
 * An html report: *chunk_report.html*
 
+multiple samples and/or tandem repeats can be run in parallel using external tools.
+[GNU Parallel](https://www.gnu.org/software/parallel/) example:
+
+```
+#Multiple samples, each with a separate "spanning_reads file" in the "spanning_reads/" directory:
+ls spanning_reads/* | parallel 'Rscript Signal2chunk.R {} ABCA7_VNTR.squiggle'
+```
+
 ### Downstream processing in R with NanoSatelliteR
 
 #### Quality control
