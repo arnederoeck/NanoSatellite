@@ -41,7 +41,6 @@ options(unzip = "internal")
 devtools::install_github("arnederoeck/NanoSatelliteR")
 ```
 
-
 ## Usage
 
 ### Clone this repository
@@ -52,6 +51,15 @@ git clone https://github.com/arnederoeck/NanoSatellite
 # Optionally, make shortcuts to the scripts:
 ln -s $PWD/NanoSatellite/{*.sh,*.R} ~/bin
 ```
+
+### ABCA7 VNTR PromethION example data
+
+The NanoSatellite algorithm was originally tested on fast5 reads spanning the ABCA7 VNTR, originating from whole genome sequencing from 11 individuals on the Oxford Nanopore PromethION platform as described [here](https://www.biorxiv.org/content/early/2018/10/09/439026). The ABCA7 VNTR fast5's are publicly accessible from [ENA](https://www.ebi.ac.uk/ena/data/view/PRJEB29458). These can be downloaded from command line with the following code:
+
+```
+wget -r ftp://ftp.sra.ebi.ac.uk/vol1/ERA164/ERA1642169/oxfordnanopore_native/
+```
+
 
 ### Generate reference squiggles (Squiggle_generator.sh)
 
