@@ -5,7 +5,7 @@ args=commandArgs(trailingOnly = TRUE)
 spanning_reads_file=args[1]
 theo_squiggle_file=args[2]
 
-if(file.exists(spanning_reads)==F){stop("Spanning_reads file not found")}
+if(file.exists(spanning_reads_file)==F){stop("Spanning_reads file not found")}
 if(file.exists(theo_squiggle_file)==F){stop("Reference_squiggle file not found")}
 
 
