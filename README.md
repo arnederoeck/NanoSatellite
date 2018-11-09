@@ -124,6 +124,7 @@ chunk_dir="/storage/NanoSatellite_chunks/"
 df <- load_summary(chunk_dir)
 qc <- summary_qc(df)
 ```
+The output consists of plots displaying normalized "flank" and "center" dynamic time warping distance, respectively corresponding to delineation of tandem repeat squiggles from flanking squiggles, and the segmentation of the tandem repeat squiggle. In addition, cutoff values corresponding to 1.5 times the interquartile range from the 75th percentile are returned.
 ![NanoSatelliteR QC](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_qc.png)
 
 #### Tandem repeat length plotting
