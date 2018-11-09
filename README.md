@@ -52,16 +52,25 @@ git clone https://github.com/arnederoeck/NanoSatellite
 ln -s $PWD/NanoSatellite/{*.sh,*.R} ~/bin
 ```
 
-### ABCA7 VNTR PromethION example data
+### *ABCA7* VNTR PromethION example data
 
-The NanoSatellite algorithm was originally tested on fast5 reads spanning the ABCA7 VNTR, originating from whole genome sequencing from 11 individuals on the Oxford Nanopore PromethION platform as described [here](https://www.biorxiv.org/content/early/2018/10/09/439026). The ABCA7 VNTR fast5's are publicly accessible from [ENA](https://www.ebi.ac.uk/ena/data/view/PRJEB29458). These can be downloaded from command line with the following code:
+The NanoSatellite algorithm was originally tested on fast5 reads spanning the *ABCA7* VNTR, originating from whole genome sequencing from 11 individuals on the Oxford Nanopore PromethION platform as described [here](https://www.biorxiv.org/content/early/2018/10/09/439026). The *ABCA7* VNTR fast5's are publicly accessible from [ENA](https://www.ebi.ac.uk/ena/data/view/PRJEB29458). These can be downloaded and unpacked from command line with the following code:
 
 ```
-wget -r ftp://ftp.sra.ebi.ac.uk/vol1/ERA164/ERA1642169/oxfordnanopore_native/
+wget ftp://ftp.sra.ebi.ac.uk/vol1/ERA164/ERA1642169/oxfordnanopore_native/*
+for f in `ls *.tar.gz`; do tar -xzvf $f; done
+```
+
+The corresponding annotation files (&ast;_spanning_reads.txt) can be found in NanoSatellite/ABCA7_VNTR_example. These files replace steps 2. and 3. below. If you'd like to use this example data, it's important to set the path to the directory where the fast5 files were unpacked. The following code can be used:
+
+```
+sed -i "s|your_fast5_directory|/your/fast5/directory|" *_spanning_reads.txt
+
 ```
 
 
-### Generate reference squiggles (Squiggle_generator.sh)
+
+### 1. Generate reference squiggles (Squiggle_generator.sh)
 
 ```
 sh Squiggle_generator.sh [arguments]
@@ -78,12 +87,12 @@ Additional arguments
     -n Change the number of tandem repeat units in the reference squiggles
 ```
 
-#### ABCA7 VNTR example:
+#### *ABCA7* VNTR example:
 ```
 sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCCCCACCACTCCCTCCCC -p ABCA7_VNTR
 ```
 
-### Index fast5 directory (fast5_indexing.sh)
+### 2. Index fast5 directory (fast5_indexing.sh)
 ```
 sh fast5_indexing.sh <summary_file> <fast5_directory> <prefix>
 
@@ -91,7 +100,7 @@ Example:
 sh fast5_indexing.sh /storage/albacore/summary.tsv /storage/fast5 example
 ```
 
-### Extract tandem repeat spanning reads (Spanning_read_extractor.sh)
+### 3. Extract tandem repeat spanning reads (Spanning_read_extractor.sh)
 
 Reads spanning the tandem repeat of interest are extracted from an aligned BAM file and coupled to the corresponding fast5 file.
 In general, commonly used alignment tools (e.g. [minimap2](https://github.com/lh3/minimap2)) should suffice. However, some tandem repeats are more difficult to align. In such a case, an approach as described [here](https://github.com/mcfrith/last-rna/blob/master/last-long-reads.md) could potentially yield more spanning reads.
@@ -106,7 +115,7 @@ chr19:1049437-1050028 \
 example_index.gz
 ```
 
-### Delineate and segment tandem repeat spanning reads on the squiggle level (Signal2chunk.R)
+### 4. Delineate and segment tandem repeat spanning reads on the squiggle level (Signal2chunk.R)
 
 ```
 Rscript Signal2chunk.R <spanning_reads file> <reference_squiggles.squiggle>
@@ -128,9 +137,9 @@ multiple samples and/or tandem repeats can be run in parallel using external too
 ls spanning_reads/* | parallel 'Rscript Signal2chunk.R {} ABCA7_VNTR.squiggle'
 ```
 
-### Downstream processing in R with NanoSatelliteR
+### 5. Downstream processing in R with NanoSatelliteR
 
-#### Quality control
+#### 5.1. Quality control
 
 ```
 library(NanoSatelliteR)
@@ -142,7 +151,7 @@ The output consists of plots displaying normalized "flank" and "center" dynamic 
 
 ![NanoSatelliteR QC](https://github.com/arnederoeck/NanoSatellite/blob/master/figures/NanoSatelliteR_qc.png)
 
-#### Tandem repeat length plotting
+#### 5.2. Tandem repeat length plotting
 
 ```
 df2 <- qual_reads(df,qc$center_cutoff)
@@ -152,7 +161,7 @@ Each sample is depicted in a separate panel, the number of tandem repeat units i
 
 ![NanoSatelliteR_plot_lengths](https://github.com/arnederoeck/NanoSatellite/blob/master/figures/NanoSatelliteR_plot_lengths.png)
 
-#### Clustering to identify alternative motifs
+#### 5.3. Clustering to identify alternative motifs
 
 ```
 #Load the tandem repeat unit squiggles
@@ -181,7 +190,7 @@ ns_heatmap(positive_clustering@distmat,"example.png",max_dist=200,rm0=T)
 Clustering in more than 2 groups is also possible. However, by increasing the number of clusters, differences between clusters become smaller which can impair accuracy. Hence supervision of clustering by the user is warranted. Re-clustering can be done by re-running `tsclust()` and supplying the previously generated distance matrix to the `distmat` paramater in `hierarchical_control()`.
 
 
-##### Centroid extraction
+##### 5.4. Centroid extraction
 
 ```
 cent <- extract_centroids(positive_clustering)
@@ -192,9 +201,9 @@ ggplot(cent,aes(x=pos,y=signal,colour=factor(cluster)))+geom_point()+geom_line()
 
 ![NanoSatelliteR_centroid_plot](https://github.com/arnederoeck/NanoSatellite/blob/master/figures/NanoSatelliteR_centroid_plot.png)
 
-For each cluster, a centroid is assigned. In this particular case of positive ABCA7 VNTR tandem repeat unit squiggles, the differences observed in cluster 1, are caused by a guanine insertion, or cytosine to adenine substitution at nucleotide ten of the ABCA7 VNTR consensus motif (inferred from comparison to Scrappie reference squiggles).
+For each cluster, a centroid is assigned. In this particular case of positive *ABCA7* VNTR tandem repeat unit squiggles, the differences observed in cluster 1, are caused by a guanine insertion, or cytosine to adenine substitution at nucleotide ten of the *ABCA7* VNTR consensus motif (inferred from comparison to Scrappie reference squiggles).
 
-##### Cluster sequence per sequencing read
+##### 5.5. Cluster sequence per sequencing read
 
 ```
 cpr <- clusters_per_read(positive_clustering)
