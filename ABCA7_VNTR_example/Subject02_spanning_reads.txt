@@ -1,0 +1,14 @@
+name	strand	path
+16b21973-4681-4693-b701-161ce161341a	negative	your_fast5_directory/Subject02_read_30215_ch_1202_strand.fast5
+3777fb1e-ff8a-4329-93d9-cdf00068da2e	negative	your_fast5_directory/Subject02_read_43196_ch_389_strand.fast5
+42d07aa3-b288-4228-97fe-f709b3a07f92	negative	your_fast5_directory/Subject02_read_15821_ch_1760_strand.fast5
+52d9051f-175e-45c3-8f55-1da55e9c9411	positive	your_fast5_directory/Subject02_read_25102_ch_1558_strand.fast5
+597d7453-da9c-490e-9064-aa76d5619f8d	negative	your_fast5_directory/Subject02_read_878_ch_2057_strand.fast5
+6d2fb8d7-9b8f-4fe7-a991-ce43b4e44215	positive	your_fast5_directory/Subject02_read_1211_ch_1104_strand.fast5
+74c25ad4-33da-4df4-a334-f7928c22a681	negative	your_fast5_directory/Subject02_read_29686_ch_1675_strand.fast5
+7bdf9193-5c64-4e35-8460-beff34e88285	negative	your_fast5_directory/Subject02_read_599_ch_127_strand.fast5
+ac572a56-c5ef-42d9-bdcb-76bb5814eebf	positive	your_fast5_directory/Subject02_read_8561_ch_1599_strand.fast5
+c4007a7a-c9b5-42dc-8db3-acb1b2fd0de2	positive	your_fast5_directory/Subject02_read_4311_ch_1933_strand.fast5
+c6978b31-8502-4b2d-82b2-36abf427321b	negative	your_fast5_directory/Subject02_read_4352_ch_2028_strand.fast5
+d3d5b1bd-f2cf-42f9-b6cc-b5936289ffc1	negative	your_fast5_directory/Subject02_read_7945_ch_823_strand.fast5
+ddd27b2a-4e30-4054-8787-1228d172cd0a	negative	your_fast5_directory/Subject02_read_26733_ch_36_strand.fast5
