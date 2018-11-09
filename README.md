@@ -139,3 +139,38 @@ Each sample is depicted in a separate panel, the number of tandem repeat units i
 ![NanoSatelliteR_plot_lengths](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_plot_lengths.png)
 
 #### Clustering to identify alternative motifs
+
+```
+#Load the tandem repeat unit squiggles
+squiggles <- load_squiggles(chunk_dir,df2)
+
+# Clustering with the dtwclust package
+#      When clustering a large amount of squiggles, parallelization with doParallel is advised
+
+library(doParallel)
+library(dtwclust)
+
+#Number of clusters
+k_clusters=2
+
+#Number of cores your computing system has available
+registerDoParallel(cores=8)
+
+#The following command clusters the tandem repeat squiggle units originating from the positive DNA strand. The same can be done for the negative strand
+positive_clustering <- tsclust(squiggles$positive,type="h",k=k_clusters,trace=TRUE,distance = "dtw_basic", control=hierarchical_control(method="ward.D",symmetric = T))
+
+#To visualy inspect clustering a heatmap can be generated:
+ns_heatmap(positive_clustering@distmat,"example.png",max_dist=200,rm0=T)
+
+```
+
+##### Centroid and cluster extraction
+
+```
+cent <- extract_centroids(positive_clustering)
+
+library(ggplot2)
+ggplot(cent,aes(x=pos,y=signal,colour=factor(cluster)))+geom_point()+geom_line()+theme_minimal()+facet_grid(. ~ cluster)+guides(colour=guide_legend(title="cluster"))
+```
+
+![NanoSatelliteR_centroid_plot](https://github.com/arnederoeck/NanoSatellite/blob/master/NanoSatelliteR_centroid_plot.png)
