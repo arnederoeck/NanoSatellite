@@ -117,6 +117,19 @@ grep -n "#" ${prefix}.squiggle > ${prefix}.squiggle.index
 if [[ $report = "yes" ]]
 then
 	current_dir=$PWD
-	path=${BASH_SOURCE[0]%/*}
-	Rscript $path/scripts/Generated_squiggles_exec.R ${prefix}.squiggle ${prefix} $path $current_dir
+	PRG="$BASH_SOURCE"
+
+    while [ -h "$PRG" ] ; do
+       ls=`ls -ld "$PRG"`
+       link=`expr "$ls" : '.*-> \(.*\)$'`
+       if expr "$link" : '/.*' > /dev/null; then
+          PRG="$link"
+       else
+          PRG=`dirname "$PRG"`"/$link"
+       fi
+    done
+
+dir=$(dirname "$PRG")
+	
+	Rscript $dir/scripts/Generated_squiggles_exec.R ${prefix}.squiggle ${prefix} $dir $current_dir
 fi
