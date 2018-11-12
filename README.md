@@ -73,7 +73,7 @@ sed -i "s|your_fast5_directory|/your/fast5/directory|" *_spanning_reads.txt
 ### 1. Generate reference squiggles (Squiggle_generator.sh)
 
 ```
-sh Squiggle_generator.sh [arguments]
+bash Squiggle_generator.sh [arguments]
 
 Mandatory arguments
     -f Fasta file with your genome of interest (necessary in the algorithm to determine the flanking sequences)
@@ -89,15 +89,15 @@ Additional arguments
 
 #### *ABCA7* VNTR example:
 ```
-sh Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCCCCACCACTCCCTCCCC -p ABCA7_VNTR
+bash Squiggle_generator.sh -f genome_hg19.fa -r chr19:1049437-1050028 -u GTGAGCCCCCCACCACTCCCTCCCC -p ABCA7_VNTR
 ```
 
 ### 2. Index fast5 directory (fast5_indexing.sh)
 ```
-sh fast5_indexing.sh <summary_file> <fast5_directory> <prefix>
+bash fast5_indexing.sh <summary_file> <fast5_directory> <prefix>
 
 Example:
-sh fast5_indexing.sh /storage/albacore/summary.tsv /storage/fast5 example
+bash fast5_indexing.sh /storage/albacore/summary.tsv /storage/fast5 example
 ```
 
 ### 3. Extract tandem repeat spanning reads (Spanning_read_extractor.sh)
@@ -106,10 +106,10 @@ Reads spanning the tandem repeat of interest are extracted from an aligned BAM f
 In general, commonly used alignment tools (e.g. [minimap2](https://github.com/lh3/minimap2)) should suffice. However, some tandem repeats are more difficult to align. In such a case, an approach as described [here](https://github.com/mcfrith/last-rna/blob/master/last-long-reads.md) could potentially yield more spanning reads.
 
 ```
-sh Spanning_read_extractor.sh <in.bam> <region> <index>
+bash Spanning_read_extractor.sh <in.bam> <region> <index>
 
 Example:
-sh Spanning_read_extractor.sh \
+bash Spanning_read_extractor.sh \
 /storage/bams/example.bam \
 chr19:1049437-1050028 \
 example_index.gz
