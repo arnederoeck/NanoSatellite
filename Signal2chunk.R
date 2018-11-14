@@ -167,7 +167,8 @@ best_matches$flank=gsub("_negative|_positive","",best_matches$theo_name)
 
 
 ### Select region of interest in each squiggle ###
-
+best_matches=best_matches[duplicated(best_matches[,c("name","flank")])==F,]
+ 
 best_matches_selector=spread(best_matches[,c("name","flank","number")],flank,number)
 
 best_matches_selector=best_matches_selector[best_matches_selector$left_flank < best_matches_selector$right_flank,]
