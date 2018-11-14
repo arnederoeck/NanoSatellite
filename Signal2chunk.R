@@ -131,6 +131,8 @@ sr_squiggle_win2=lapply(sr_squiggle,function(x){
 
 keys <- unique(c(names(sr_squiggle_win1), names(sr_squiggle_win2)))
 sr_squiggle_win=setNames(mapply(c, sr_squiggle_win1[keys], sr_squiggle_win2[keys]), keys)
+  
+sr_squiggle_win=sr_squiggle_win[sapply(sr_squiggle_win,is.atomic)==F]
 
 sr_squiggle_win=lapply(sr_squiggle_win,function(x) lapply(x,function(y){
   signalz=as.numeric(scale(y$signal))
