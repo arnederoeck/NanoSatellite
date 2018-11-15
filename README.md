@@ -7,6 +7,8 @@ Several tools exist to analyze tandem repeats (e.g. [tandem-genotypes](https://g
 
 ![NanoSatellite delineation and segmentation](https://github.com/arnederoeck/NanoSatellite/blob/master/figures/raw_positive_squiggle_plot_chunk_colorized20180813.png)
 
+Dynamic time warping (embedded in NanoSatellite) requires a minimum "pattern size" for good pattern recognition. Hence for tandem repeats with a very short tandem repeat motif, or low numbers of repeating motifs NanoSatellite will produce suboptimal results.
+
 ## Citation
 If this tool is useful for your work, please consider citing our [preprint](https://www.biorxiv.org/content/early/2018/10/09/439026).
 
