@@ -117,6 +117,8 @@ example_index.gz
 
 ### 4. Delineate and segment tandem repeat spanning reads on the squiggle level (Signal2chunk.R)
 
+#### 4.1 The simplest way (needs a functioning rhdf5 installation in R)
+
 ```
 Rscript Signal2chunk.R <spanning_reads file> <reference_squiggles.squiggle>
 
@@ -136,6 +138,36 @@ multiple samples and/or tandem repeats can be run in parallel using external too
 #Multiple samples, each with a separate "spanning_reads file" in the "spanning_reads/" directory:
 ls spanning_reads/* | parallel 'Rscript Signal2chunk.R {} ABCA7_VNTR.squiggle'
 ```
+#### 4.2 Alternative approach in case of rhdf5 error using approach 4.1
+
+Some versions of R and rhdf5 don't work well together and can result in an HDF5 error when running `Signal2chunk.R`. If this occurs we made a workaround using `fast5_extract.py` (with thanks to [Wouter](https://github.com/wdecoster)), which depends on [ont_fast5_api](https://github.com/nanoporetech/ont_fast5_api). `fast5_extract.py` extracts the squiggle data from fast5, which can be written away to a file that can subsequently be supplied to `Signal2chunk.R` as the third argument.
+
+usage:
+
+```
+fast5_extract.py [-h] [-d DIR] [-f [FILE [FILE ...]]] [-r]
+
+Extract signal level from fast5 files
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DIR, --dir DIR     directory with fast5 file(s) to extract signal from
+  -f [FILE [FILE ...]], --file [FILE [FILE ...]]
+                        fast5 file(s) to extract signal from
+  -r, --recursive       recursively go through directories
+```
+
+Either supply a directory of fast5 files using -d/--dir, searched optionally recursive with -r/--recursive OR supply on or more fast5 files with -f/--file
+
+Example:
+
+```
+python fast5_extract.py -r -d /storage/fast5/ > fast5_pre-extracted.txt
+
+Rscript Signal2chunk.R spanning_reads.txt ABCA7_VNTR.squiggle fast5_pre-extracted.txt
+```
+
+
 
 ### 5. Downstream processing in R with NanoSatelliteR
 
