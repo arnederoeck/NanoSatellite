@@ -4,6 +4,7 @@ args=commandArgs(trailingOnly = TRUE)
 
 spanning_reads_file=args[1]
 theo_squiggle_file=args[2]
+extracted_squiggle_data=args[3]
 
 if(file.exists(spanning_reads_file)==F){stop("Spanning_reads file not found")}
 if(file.exists(theo_squiggle_file)==F){stop("Reference_squiggle file not found")}
@@ -13,7 +14,6 @@ mvnStepPattern=25
 digit=1
 
 ####### Libraries #######
-library(rhdf5)
 library(dtw,quietly = T)
 library(ggplot2)
 library(dplyr,quietly = T)
@@ -38,8 +38,21 @@ df
 sr=read.table(spanning_reads_file,header=T,sep="\t",stringsAsFactors = F)
 sr=unique(sr[order(sr$name),])
 
+if(is.na(extracted_squiggle_data)){
+library(rhdf5)
 sr_squiggle=setNames(lapply(sr$path,fast5_to_current),sr$name)
+} else {
+if(file.exists(extracted_squiggle_data)==F){stop("Extracted_squiggle_data file not found")}
+sr$filename=gsub(".*/","",sr$path)
+fast5e=setNames(read.table("~/test_NanoSatellite/fast5_extracted.txt",stringsAsFactors = F, sep="\t"),c("path","signalcsv"))
+fast5e$filename=gsub(".*/","",fast5e$path)
 
+fast5e2=inner_join(fast5e,sr[,c("name","filename")],by="filename")
+fast5e2=unique(fast5e2[order(fast5e2$name),])
+sr_squiggle=setNames(lapply(strsplit(fast5e2$signalcsv,","),function(x){
+  data.frame(number=1:length(x),signal=as.integer(x))
+  }),fast5e2$name)
+}
 
 ####### Process theoretical squiggles #######
 
