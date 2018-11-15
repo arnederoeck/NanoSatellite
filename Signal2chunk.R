@@ -44,7 +44,7 @@ sr_squiggle=setNames(lapply(sr$path,fast5_to_current),sr$name)
 } else {
 if(file.exists(extracted_squiggle_data)==F){stop("Extracted_squiggle_data file not found")}
 sr$filename=gsub(".*/","",sr$path)
-fast5e=setNames(read.table("~/test_NanoSatellite/fast5_extracted.txt",stringsAsFactors = F, sep="\t"),c("path","signalcsv"))
+fast5e=setNames(read.table(extracted_squiggle_data,stringsAsFactors = F, sep="\t"),c("path","signalcsv"))
 fast5e$filename=gsub(".*/","",fast5e$path)
 
 fast5e2=inner_join(fast5e,sr[,c("name","filename")],by="filename")
