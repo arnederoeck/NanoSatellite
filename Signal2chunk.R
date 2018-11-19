@@ -36,7 +36,8 @@ df
 
 ####### Load sequence read data #######
 sr=read.table(spanning_reads_file,header=T,sep="\t",stringsAsFactors = F)
-sr=unique(sr[order(sr$name),])
+sr=sr[order(sr$name),]
+sr=sr[duplicated(sr$name)==F,]
 
 if(is.na(extracted_squiggle_data)){
 library(rhdf5)
@@ -253,8 +254,9 @@ dtw_master_center2=left_join(dtw_master_center,left_join(sr[,c("name","strand")]
 chunk_sep_center=data.frame()
 
 for(i in 1:nrow(dtw_master_center2)){
-  a=data.frame(sr_squiggle_sel_center[[i]],row.names = NULL,stringsAsFactors = F)
-  theo_name=dtw_master_center2[i,"theo_name"]
+  read_name=dtw_master_center2[i,"name"]
+  a=data.frame(sr_squiggle_sel_center[[read_name]],row.names = NULL,stringsAsFactors = F)
+    theo_name=dtw_master_center2[i,"theo_name"]
   
   left2right=1
   right2left=nrow(a)
