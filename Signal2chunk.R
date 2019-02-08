@@ -323,7 +323,9 @@ chunk_sep_center2_list=lapply(dtw_master_center2$name,function(x){
   y_overlap=y[(y$direction=="left2right" & y$number >= right_min) | (y$direction=="right2left" & y$number <= left_max),]
   left_dist=mean(y_overlap[y_overlap$direction=="left2right","distance"])
   right_dist=mean(y_overlap[y_overlap$direction=="right2left","distance"])
-  if(right_dist<left_dist){
+  if(is.na(right_dist<left_dist)){
+    exclude="unknown_error"
+  } else if(right_dist<left_dist){
     exclude="left2right"
   } else {
     exclude="right2left"
