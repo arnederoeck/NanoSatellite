@@ -23,7 +23,7 @@ fi
 bam=$1
 region=$2
 index=$3
-filebase=`echo ${1##*/} | cut -d '.' -f1`
+filebase=`echo ${bam##*/}_$region | sed 's/\..*_/_/g' | sed 's/\:/-/g'`
 extension=1000
 
 chromosome=`echo $region | cut -d ':' -f1`
