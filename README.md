@@ -171,7 +171,7 @@ optional arguments:
   -r, --recursive       recursively go through directories
 ```
 
-Either supply a directory of fast5 files using -d/--dir, searched optionally recursive with -r/--recursive OR supply on or more fast5 files with -f/--file
+Either supply a directory of fast5 files using -d/--dir, searched optionally recursive with -r/--recursive OR supply one or more fast5 files with -f/--file
 
 Example:
 
