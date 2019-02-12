@@ -20,7 +20,7 @@ before_install:
   - conda update --yes conda
 
 install:
-  - travis_wait 30 bash scripts/install.sh &>> build.log
+  - travis_wait 30 bash scripts/install.sh &> build.log
 
 script:
   - bash scripts/test.sh
