@@ -20,10 +20,18 @@ before_install:
   - conda update --yes conda
 
 install:
-  - bash scripts/install.sh
+  - travis_wait 30 bash scripts/install.sh &>> build.log
 
 script:
   - bash scripts/test.sh
+
+after_failure:
+  # dump the last 2000 lines of our build, and hope the error is in that!
+  - tail --lines=2000 build.log
+
+after_success:
+  # Log that the build worked, because we all need some good news
+  - echo "Build and test succeeded :-D"
 
 notifications:
   email: false
