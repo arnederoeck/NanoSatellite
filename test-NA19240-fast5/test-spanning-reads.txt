@@ -1,0 +1,5 @@
+name	strand	path
+04ecdff3-0028-48ff-b44f-4be074b202fe	negative	test-NA19240-fast5/NA19240_read_7799_ch_2274_strand.fast5
+0ceb853f-0f00-479b-a8de-ccba58939d8f	positive	test-NA19240-fast5/NA19240_read_7757_ch_1102_strand.fast5
+0f767f01-9523-44b0-9cd7-40850e64f383	negative	test-NA19240-fast5/NA19240_read_4672_ch_1401_strand.fast5
+10feb47c-e836-435e-859f-c1a33c117a35	positive	test-NA19240-fast5/NA19240_read_6478_ch_1228_strand.fast5

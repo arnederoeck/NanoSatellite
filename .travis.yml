@@ -1,0 +1,37 @@
+language: r
+
+os:
+  - linux
+
+r:
+  - oldrel
+  - release
+  - devel
+
+before_install:
+  # Here we just install Miniconda, which you shouldn't have to change.
+  - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+  - chmod +x miniconda.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - conda config --add channels defaults
+  - conda config --add channels bioconda
+  - conda config --add channels conda-forge
+  - conda update --yes conda
+
+install:
+  - travis_wait 30 bash scripts/install.sh &> build.log
+
+script:
+  - bash scripts/test.sh
+
+after_failure:
+  # dump the last 2000 lines of our build, and hope the error is in that!
+  - tail --lines=2000 build.log
+
+after_success:
+  # Log that the build worked, because we all need some good news
+  - echo "Build and test succeeded :-D"
+
+notifications:
+  email: false
