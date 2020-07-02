@@ -1,3 +1,13 @@
+## *This tool was built to solve issues with Nanopore sequencing data quality, which are nowadays largely solved by better base calling. Additionally, this tool was not updated to keep up with changes in the data formats created by ONT, and may not work with your current input data. To investigate tandem repeats in your data we currently recommend [STRique](https://github.com/giesselmann/STRique), [tandem-genotypes](https://github.com/mcfrith/tandem-genotypes), and [TRiCoLOR](https://github.com/davidebolo1993/TRiCoLOR).*
+
+
+
+
+
+
+
+
+
 # NanoSatellite
 Dynamic time warping of Oxford Nanopore squiggle data to characterize tandem repeats.
 
